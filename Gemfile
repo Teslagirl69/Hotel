@@ -74,7 +74,7 @@ gem "google-cloud-storage", "~> 1.11", require: false
 gem 'devise'
 gem 'csv'
 gem 'wicked_pdf'
-gem 'axlsx_rails'
+gem 'caxlsx'
 gem 'faker'
 gem 'kaminari'
 gem 'bootstrap', '~> 5.2.0'
