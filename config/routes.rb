@@ -3,4 +3,20 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+        devise_for :admins, path: 'admins', controllers: {
+          registrations: 'admins/registrations'
+        }
+        devise_for :admins, path: 'admins', controllers: {
+          sessions: 'admins/sessions'
+        }
+        devise_scope :admin do
+          authenticated :admin do
+            namespace :admins do
+              get 'admins//index', as: :authenticated_root
+              get '/admins/sign_out' => 'devise/sessions#destroy'
+            end
+          end
+         end
+
 end
