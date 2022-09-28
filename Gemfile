@@ -19,7 +19,8 @@ gem "puma", "~> 5.0"
 gem "importmap-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
+gem "turbo-rails", '~> 1.0.0'
+
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
@@ -78,3 +79,6 @@ gem 'caxlsx'
 gem 'faker'
 gem 'kaminari'
 gem 'bootstrap', '~> 5.2.0'
+gem "cssbundling-rails", "~> 1.1"
+
+gem "jsbundling-rails", "~> 1.0"
