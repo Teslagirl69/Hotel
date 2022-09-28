@@ -78,7 +78,7 @@ gem 'wicked_pdf'
 gem 'caxlsx'
 gem 'faker'
 gem 'kaminari'
-gem 'bootstrap', '~> 5.2.0'
+gem 'bootstrap', '~> 5.1.3'
 gem "cssbundling-rails", "~> 1.1"
 
 gem "jsbundling-rails", "~> 1.0"
