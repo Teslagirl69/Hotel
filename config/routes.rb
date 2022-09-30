@@ -13,9 +13,13 @@ Rails.application.routes.draw do
                devise_scope :admin do
           authenticated :admin do
             namespace :admin do
+              get '/dashboard', to: 'pages#dashboard'
               get 'admin/index', as: :authenticated_root
               get '/admin/sign_out' => 'devise/sessions#destroy'
               resources :rooms
+              # resources :pages
+
+
             end
           end
          end
