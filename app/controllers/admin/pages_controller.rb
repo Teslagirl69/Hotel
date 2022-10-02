@@ -1,3 +1,6 @@
 class  Admin::PagesController < ApplicationController
-  def dashboard; end
+    before_action :authenticate_admin!
+    def dashboard
+
+    end
 end

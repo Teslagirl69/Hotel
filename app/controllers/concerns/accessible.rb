@@ -7,7 +7,7 @@ module Accessible
   def check_resource
     if admin_signed_in?
       flash.clear
-      redirect_to(admins_authenticated_root_path) and return
+      redirect_to(admin_authenticated_root_path) and return
     end
   end
 end
