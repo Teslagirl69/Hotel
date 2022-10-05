@@ -1,19 +1,28 @@
 Rails.application.routes.draw do
+
+  root "pages#index"
+  resources :rooms, only: [:index, :show]
+  resources :bookings
+  resources :reviews
   devise_for :admin, path: 'admin', controllers: {
             registrations: 'admin/registrations'
           }, :sign_out_via => [ :get ]
-                  namespace :admin do
-                    # root :to => 'pages#dashboard'
-                    get 'dashboard', to: 'pages#dashboard'
-                    get '/admin/dashboard', as: :authenticated_root
-                    resources :rooms
-                    # resources :pages
-                  end
+  namespace :admin do
+    resources :reviews do
+      member do
+        get :toggle_status
+      end
+    end
+    resources :rooms, :bookings, :reviews
+    get '/admin/dashboard', as: :authenticated_root
+    get 'dashboard', to: 'pages#dashboard'
+
+  end
   unauthenticated :admin do
-                namespace :admin do
-                  root :to => 'session#new', as: :unauthenticated_root
-              end
-             end
+    namespace :admin do 
+      root :to => 'session#new', as: :unauthenticated_root
+    end
+  end
 
 
 

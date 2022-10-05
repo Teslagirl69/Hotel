@@ -1,0 +1,28 @@
+<h1>New review</h1>
+
+<%= render "form", review: @review %>
+
+<br>
+<div>
+  <%= form.label :start_date, style: "display: block" %>
+  <%= form.date_field :start_date %>
+</div>
+
+<div>
+  <%= form.label :last_date, style: "display: block" %>
+  <%= form.date_field :last_date %>
+</div>
+
+<div>
+  <%= form.label :num_of_persons, style: "display: block" %>
+  <%= form.number_field :num_of_persons %>
+</div>
+
+<div>
+  <%= form.label :room_id, style: "display: block" %>
+  <%= form.number_field :room_id %>
+</div>
+
+<div>
+  <%= link_to "Back to reviews", reviews_path %>
+</div>
