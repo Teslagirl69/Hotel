@@ -4,7 +4,7 @@ class Admin::BookingsController < ApplicationController
 
   # GET /bookings or /bookings.json
   def index
-    @bookings = Booking.all
+    @bookings = Booking.all.order("bookings.created_at desc")
   end
 
   # GET /bookings/1 or /bookings/1.json
@@ -66,6 +66,8 @@ class Admin::BookingsController < ApplicationController
     elsif @booking.accepted?
       @booking.pended!
     end
+    redirect_to admin_bookings_url, notice: 'Booking status has been updated.'
+
   end
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: %i[index show]
+  before_action :set_room, only: %i[show]
 
   # GET /rooms or /rooms.json
   def index

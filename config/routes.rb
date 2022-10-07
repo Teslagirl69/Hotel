@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root "pages#index"
-  resources :rooms, only: [:index, :show]
+  resources :rooms
   resources :bookings
   resources :reviews
   devise_for :admin, path: 'admin', controllers: {
@@ -9,6 +9,11 @@ Rails.application.routes.draw do
           }, :sign_out_via => [ :get ]
   namespace :admin do
     resources :reviews do
+      member do
+        get :toggle_status
+      end
+    end
+    resources :bookings do
       member do
         get :toggle_status
       end

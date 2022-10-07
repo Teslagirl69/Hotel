@@ -1,5 +1,16 @@
 <div id="<%= dom_id booking %>">
   <p>
+    <strong>Your name:</strong>
+    <%= booking.user_name %>
+  </p>
+
+  <p>
+    <strong>Your email:</strong>
+    <%= booking.user_email %>
+  </p>
+
+  <p>
+  <p>
     <strong>Start date:</strong>
     <%= booking.start_date %>
   </p>
@@ -9,10 +20,7 @@
     <%= booking.last_date %>
   </p>
 
-  <p>
-    <strong>Num of persons:</strong>
-    <%= booking.num_of_persons %>
-  </p>
+
 
   <p>
     <strong>Room:</strong>

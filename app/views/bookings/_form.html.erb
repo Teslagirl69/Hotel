@@ -5,11 +5,22 @@
 
       <ul>
         <% booking.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <%# binding.pry %>
+          <li><%=  error.attribute.to_s %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
+
+  <div>
+    <%= form.label :user_name, style: "display: block" %>
+    <%= form.search_field :user_name %>
+  </div>
+
+  <div>
+    <%= form.label :user_email, style: "display: block" %>
+    <%= form.email_field :user_email %>
+  </div>
 
   <div>
     <%= form.label :start_date, style: "display: block" %>
