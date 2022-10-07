@@ -4,7 +4,7 @@ class Admin::RoomsController < ApplicationController
 
   # GET /rooms or /rooms.json
   def index
-    @rooms = Room.all
+    @rooms = Room.all.with_attached_images
   end
 
   # GET /rooms/1 or /rooms/1.json
@@ -39,7 +39,7 @@ class Admin::RoomsController < ApplicationController
 
   # PATCH/PUT /rooms/1 or /rooms/1.json
   def update
-    respond_to do |format|
+       respond_to do |format|
       if @room.update(room_params)
         format.html { redirect_to admin_rooms_url(@room), notice: "Room was successfully updated." }
         format.json { render :show, status: :ok, location: @room }
@@ -68,6 +68,14 @@ class Admin::RoomsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def room_params
-      params.require(:room).permit(:name, :description, :price, :max_number_of_visitors)
+      params.require(:room).permit(:name, :description, :short_description, :price, images: [])
     end
 end
+# create_table "rooms", force: :cascade do |t|
+#   t.string "name"
+#   t.text "description"
+#   t.integer "price"
+#   t.datetime "created_at", null: false
+#   t.datetime "updated_at", null: false
+#   t.text "short_description"
+# end
