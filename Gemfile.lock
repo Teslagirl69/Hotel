@@ -383,7 +383,7 @@ DEPENDENCIES
   csv
   debug
   devise
-  dotenv-rails (~> 2.7)
+  dotenv-rails
   factory_bot_rails
   faker
   google-cloud-storage (~> 1.11)
