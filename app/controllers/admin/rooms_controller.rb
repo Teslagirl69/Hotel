@@ -55,7 +55,7 @@ class Admin::RoomsController < ApplicationController
     @room.destroy
 
     respond_to do |format|
-      format.html { redirect_to rooms_url, notice: "Room was successfully destroyed." }
+      format.html { redirect_to admin_rooms_url, notice: "Room was successfully destroyed." }
       format.json { head :no_content }
     end
   end

@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
   root "pages#index"
-  resources :rooms
-  resources :bookings
+  resources :rooms do
+    resources :bookings
+  end
   resources :reviews
+  get '/bookings', to: 'bookings#choose_room'
+
   devise_for :admin, path: 'admin', controllers: {
             registrations: 'admin/registrations'
           }, :sign_out_via => [ :get ]

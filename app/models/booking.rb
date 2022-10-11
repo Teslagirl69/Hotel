@@ -2,8 +2,8 @@ class Booking < ApplicationRecord
   enum status: { pended: 0, accepted: 1 }
   belongs_to :room
   validates :start_date, :last_date, presence: true
-  before_validation :rooms_are_available
   before_validation :dates_is_blank
+  before_validation :rooms_are_available
   validate :date_restrictions
 
   def date_restrictions
@@ -14,20 +14,25 @@ class Booking < ApplicationRecord
       elsif last_date.to_date < start_date.to_date
        errors.add('Check-out date should be greater than Check-in date')
      end
-   end
+  end
+
   # get the all the room_id which room are booked in between start_date and last_date
   def self.excluded_id(start_date, last_date)
     # if array is empty return true else return the array
-    if (b= Booking.where('Date(start_date) < ? AND Date(last_date) > ? ', last_date, start_date).map(&:room_id)).empty?
-      return false
+    if (@book_room = Booking.where('Date(start_date) < ? AND Date(last_date) > ? ', last_date, start_date).map(&:room_id)).empty?
+      return []
     else
-      return b
+      return @book_room
     end
   end
 
   def rooms_are_available
-     @booked_rooms = Room.available_rooms(start_date, last_date)
-    if @booked_rooms.include?(self.room_id)
+    @booked_rooms = Room.available_rooms(start_date, last_date)
+
+    if @booked_rooms.empty?
+      return true
+      else
+      @booked_rooms.include?(self.room_id)
       errors.add("This room is not available on the selected dates.")
     end
   end

@@ -1,0 +1,119 @@
+@import "bootstrap";
+//$navbar-default-bg: black;
+//
+//
+//#logo {
+//  float: left;
+//  font-size: 1.7em;
+//  color: saddlebrown;
+//  text-transform: uppercase;
+//  letter-spacing: -1px;
+//  font-weight: bold;
+//}
+//#logo:hover {
+//  color: #fff;
+//  text-decoration: none;
+//}
+//.article-actions {
+//  border-top: 1px solid #eaeaea;
+//  padding-top: 5px;
+//}
+//.article-title {
+//  font-weight: bold;
+//  font-size: 1.5em;
+//}
+//.article-body {
+//  border-top: 1px solid #eaeaea;
+//  padding-top: 15px;
+//  padding-bottom: 15px;
+//}
+//.article-meta-details {
+//  border-top: 1px solid #eaeaea;
+//  margin-top: 15px;
+//}
+//.description {
+//  margin-top: 0;
+//}
+//.listing {
+//  list-style: none;
+//  padding-left: 0;
+//}
+//
+.b-pict > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.b-pict-date,
+.b-pict-caption {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 5px 10px;
+  color: #fff;
+}
+
+.b-pict-date {
+  top: 0;
+  right: 0;
+  display: inline-block;
+}
+
+.b-pict-caption {
+  bottom: 5%;
+  left: 0;
+  width: 100%;
+  text-transform: uppercase;
+}
+/* Color of the links BEFORE scroll */
+.navbar-scroll .nav-link,
+.navbar-scroll .navbar-toggler-icon,
+.navbar-scroll .navbar-brand {
+  color: #fff;
+}
+
+/* Color of the links AFTER scroll */
+.navbar-scrolled .nav-link,
+.navbar-scrolled .navbar-toggler-icon,
+.navbar-scrolled .navbar-brand {
+  color: #fff;
+}
+
+/* Color of the navbar AFTER scroll */
+.navbar-scroll,
+.navbar-scrolled {
+  background-color: #cbbcb1;
+}
+
+.mask-custom {
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, .15);
+}
+
+.navbar-brand {
+  font-size: 1.75rem;
+  letter-spacing: 3px;
+}
+
+
+#slider {
+  position: relative;
+  overflow: hidden;
+  width: 400px;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+#items img {
+  float: left;
+  width: 400px;
+  height: 200px;
+}
+.container-lg img {
+  display: block;
+  width: 600px;
+  height: 350px !important;
+  margin: 0 auto;
+}
