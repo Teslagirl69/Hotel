@@ -5,6 +5,8 @@ class Admin::BookingsController < ApplicationController
   # GET /bookings or /bookings.json
   def index
     @bookings = Booking.all.order("bookings.created_at desc")
+    @caclulations = CalculateDailyStatService.new.calculate
+
   end
   # GET /bookings/1 or /bookings/1.json
   def show

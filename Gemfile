@@ -78,6 +78,7 @@ gem "google-cloud-storage", "~> 1.11", require: false
 gem 'devise'
 gem 'csv'
 gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 gem 'caxlsx'
 gem 'faker'
 gem 'kaminari'
