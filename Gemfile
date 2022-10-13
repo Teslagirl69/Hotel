@@ -30,7 +30,7 @@ gem "jbuilder"
 gem "jquery-rails"
 
 # Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+#  gem "redis", "~> 6.2"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -83,5 +83,8 @@ gem 'faker'
 gem 'kaminari'
 gem 'bootstrap', '~> 5.1.3'
 gem "cssbundling-rails", "~> 1.1"
-
 gem "jsbundling-rails", "~> 1.0"
+
+
+
+gem "sidekiq", "~> 6.5"

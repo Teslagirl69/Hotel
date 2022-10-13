@@ -1,5 +1,13 @@
-Rails.application.routes.draw do
+require 'sidekiq/web'
 
+class AdminConstraint
+  def matches?(request)
+    admin_id = request.session[:admin_id]
+  end
+end
+
+Rails.application.routes.draw do
+  mount Sidekiq::Web => 'admin/sidekiq'
   root "pages#index"
   resources :rooms do
     resources :bookings
@@ -24,10 +32,11 @@ Rails.application.routes.draw do
     resources :rooms, :bookings, :reviews
     get '/admin/dashboard', as: :authenticated_root
     get 'dashboard', to: 'pages#dashboard'
+    get 'booking_files(.:format)', to: 'files_for_bookings#download'
 
   end
   unauthenticated :admin do
-    namespace :admin do 
+    namespace :admin do
       root :to => 'session#new', as: :unauthenticated_root
     end
   end

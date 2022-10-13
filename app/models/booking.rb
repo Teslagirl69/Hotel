@@ -1,10 +1,15 @@
 class Booking < ApplicationRecord
   enum status: { pended: 0, accepted: 1 }
   belongs_to :room
-  validates :start_date, :last_date, presence: true
+  validates :start_date, :last_date, :user_email, :user_name, presence: true
   before_validation :dates_is_blank
   before_validation :rooms_are_available
   validate :date_restrictions
+  after_update :enqueue
+
+  def enqueue
+    BookingsCsvJob.perform_later if self.accepted?
+  end
 
   def date_restrictions
       if Date.today > start_date
@@ -32,8 +37,9 @@ class Booking < ApplicationRecord
     if @booked_rooms.empty?
       return true
       else
-      @booked_rooms.include?(self.room_id)
-      errors.add("This room is not available on the selected dates.")
+      @booked_rooms.include?(room_id)
+      # errors.add("This room is not available on the selected dates.")
+      return false
     end
   end
 
