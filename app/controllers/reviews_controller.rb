@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 class ReviewsController < ApplicationController
-  before_action :set_review, only: %i[ show edit update destroy ]
+  before_action :set_review, only: %i[show edit update destroy]
   # GET /reviews or /reviews.json
   def index
-      @reviews = Review.all.published
+    @reviews = Review.all.published
   end
 
   # GET /reviews/1 or /reviews/1.json
   def show
-     @review = Review.find(params[:id])
+    @review = Review.find(params[:id])
   end
 
   # GET /reviews/new
@@ -16,8 +18,7 @@ class ReviewsController < ApplicationController
   end
 
   # GET /reviews/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /reviews or /reviews.json
   def create
@@ -25,7 +26,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to review_url(@review), notice: "Review was successfully created." }
+        format.html { redirect_to review_url(@review), notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class ReviewsController < ApplicationController
   def update
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to review_url(@review), notice: "Review was successfully updated." }
+        format.html { redirect_to review_url(@review), notice: 'Review was successfully updated.' }
         format.json { render :show, status: :ok, location: @review }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class ReviewsController < ApplicationController
     @review.destroy
 
     respond_to do |format|
-      format.html { redirect_to reviews_url, notice: "Review was successfully destroyed." }
+      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -62,13 +63,14 @@ class ReviewsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_review
-      @review = Review.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def review_params
-      params.require(:review).permit(:author_name, :author_email, :body)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_review
+    @review = Review.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def review_params
+    params.require(:review).permit(:author_name, :author_email, :body)
+  end
 end

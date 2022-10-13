@@ -1,9 +1,13 @@
+# frozen_string_literal: true
+
 module Accessible
   extend ActiveSupport::Concern
   included do
     before_action :check_resource
   end
+
   protected
+
   def check_resource
     if admin_signed_in?
       flash.clear

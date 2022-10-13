@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RoomsController < ApplicationController
   before_action :set_room, only: %i[show]
 
@@ -11,15 +13,15 @@ class RoomsController < ApplicationController
     @booking = Booking.new
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_room
-      @room = Room.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def room_params
-      params.require(:room).permit(:name, :description, :price, :short_description, images:[])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_room
+    @room = Room.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def room_params
+    params.require(:room).permit(:name, :description, :price, :short_description, images: [])
+  end
 end
