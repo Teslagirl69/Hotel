@@ -8,8 +8,9 @@
       <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
       <ul>
         <% @booking.errors.each do |error| %>
-          <%# binding.pry %>
-          <li><%=  error.attribute.to_s %></li>
+          <li><%=  error.full_message  %></li>
+
+<!--          <li><%#=  error.attribute.to_s %></li>-->
         <% end %>
       </ul>
     </div>
