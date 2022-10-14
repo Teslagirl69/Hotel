@@ -29,4 +29,4 @@
     #   super(resource_name, resource)
     # end
   end
-end
+

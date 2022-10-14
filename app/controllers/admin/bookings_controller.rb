@@ -84,4 +84,4 @@
       params.require(:booking).permit(:start_date, :last_date, :room_id)
     end
   end
-end
+

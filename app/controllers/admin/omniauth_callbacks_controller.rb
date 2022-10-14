@@ -29,4 +29,4 @@
     #   super(scope)
     # end
   end
-end
+

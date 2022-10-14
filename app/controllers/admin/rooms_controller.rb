@@ -72,4 +72,3 @@
       params.require(:room).permit(:name, :description, :short_description, :price, images: [])
     end
   end
-end

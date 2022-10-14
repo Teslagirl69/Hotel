@@ -5,4 +5,3 @@
     include Accessible
     skip_before_action :check_resource, only: :destroy
   end
-end

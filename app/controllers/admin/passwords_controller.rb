@@ -33,4 +33,3 @@
     #   super(resource_name)
     # end
   end
-end

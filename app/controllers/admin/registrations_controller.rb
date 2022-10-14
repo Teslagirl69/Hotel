@@ -5,4 +5,4 @@
     include Accessible
     skip_before_action :check_resource, except: [new, :create]
   end
-end
+

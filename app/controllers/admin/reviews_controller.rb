@@ -82,4 +82,3 @@
       params.require(:review).permit(:author_name, :author_email, :body, :toggle_status)
     end
   end
-end
