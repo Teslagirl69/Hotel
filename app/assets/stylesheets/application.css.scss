@@ -77,3 +77,78 @@
   height: 350px !important;
   margin: 0 auto;
 }
+
+.center {
+  text-align: center;
+  }
+//
+//.pagination a,span {
+//  float: left;
+//}
+//
+//.pagination span.current, span.gap {
+//  padding: 2px 5px;
+//  margin-right: 5px;
+//  border-style: inset;
+//  border-width: 1px;
+//}
+//.pagination a {
+//  text-decoration: none;
+//  padding: 2px 5px;
+//  margin-right: 5px;
+//  display: block;
+//  border-style: inset;
+//  border-width: 1px;
+//}
+//
+//.pagination span.current, span.gap {
+//  background: mistyrose;
+//  color: black;
+//  border: 1px solid ;
+//  padding: 6px;
+//  min-width: 15px;
+//  text-align: center;
+//  -moz-border-radius: 2px;
+//  -webkit-border-radius: 2px;
+//}
+////Кнопки, кроме текущей
+//.pagination a {
+//  border: 2px solid #c3c4ba;
+//  -moz-border-radius: 2px;
+//  -webkit-border-radius: 2px;
+//  border-radius: 2px;
+//  margin-right: 5px;
+//  padding: 6px;
+//  min-width: 15px;
+//  text-align: center;
+//  background: rosybrown;
+//  color: #111111;
+//}
+//
+//.pagination a:hover {
+//  border: 2px solid;
+//  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0);
+//  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0);
+//  box-shadow: 0 0 4px rgba(0, 0, 0, 0);
+//}
+//
+//.pagination a:active {
+//  outline: none;
+//}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  background-color: white;
+  color: black;
+}
+
+.pagination a:hover:not(.active) {background-color: rosybrown;}

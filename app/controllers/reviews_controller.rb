@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: %i[show edit update destroy]
   # GET /reviews or /reviews.json
   def index
-    @reviews = Review.all.published
+    @reviews = Review.all.published.order(created_at: :desc).page params[:page]
   end
 
   # GET /reviews/1 or /reviews/1.json
