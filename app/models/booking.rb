@@ -38,7 +38,7 @@ class Booking < ApplicationRecord
       return true
       else
       @booked_rooms.include?(room_id)
-      # errors.add("This room is not available on the selected dates.")
+      errors.add("This room is not available on the selected dates.")
       return false
     end
   end
