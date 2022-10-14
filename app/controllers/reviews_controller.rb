@@ -17,9 +17,6 @@ class ReviewsController < ApplicationController
     @review = Review.new
   end
 
-  # GET /reviews/1/edit
-  def edit; end
-
   # POST /reviews or /reviews.json
   def create
     @review = Review.new(review_params)
@@ -33,33 +30,6 @@ class ReviewsController < ApplicationController
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  # PATCH/PUT /reviews/1 or /reviews/1.json
-  def update
-    respond_to do |format|
-      if @review.update(review_params)
-        format.html { redirect_to review_url(@review), notice: 'Review was successfully updated.' }
-        format.json { render :show, status: :ok, location: @review }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /reviews/1 or /reviews/1.json
-  def destroy
-    @review.destroy
-
-    respond_to do |format|
-      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
-  def make_review_accepted
-    # code here
   end
 
   private
