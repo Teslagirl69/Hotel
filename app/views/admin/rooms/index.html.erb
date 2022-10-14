@@ -17,7 +17,7 @@
     <tbody>
     <% @rooms.each do |room| %>
     <tr>
-      <td> <%= room.name %></td>
+      <td> <%= link_to  room.name, admin_room_path(room) %></td>
       <td> <%= room.created_at %></td>
       <td> <%= room.updated_at %></td>
       <td> <%= button_to "Edit", edit_admin_room_path(room),method: :get, class: "btn btn-xs btn-primary" %>&nbsp; </td>
