@@ -24,35 +24,37 @@
   <%@room = Room.find(params[:room_id]) %>
 
 
-  <div>
-    <%= form.label :"Your name", style: "display: block" %>
-    <%= form.search_field :user_name %>
-  </div>
 
-  <div>
-    <%= form.label :"Your email", style: "display: block" %>
-    <%= form.email_field :user_email %>
-  </div>
+  <div class="container-sm">
 
-  <div>
-    <%= form.label "Choose check_in date", style: "display: block" %>
-    <%= form.date_field :start_date %>
-  </div>
+    <form>
 
-  <div>
-    <%= form.label "Choose check_out date", style: "display: block" %>
-    <%= form.date_field :last_date %>
-  </div>
+      <!-- Name input -->
+      <div class="form-outline mb-4">
 
-  <div>
-    <input name="booking[room_id]" value="<%=params[:room_id] %>" type="hidden">
-  </div>
-  <%@booking.room_id = params[:room_id] %>
+        <label class="form-label" for="form4Example1">Name</label>
+        <input type="text" id="form4Example1" class="form-control" name="booking[user_name]" />
+      </div>
 
-  <div>
-    <br>
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <label class="form-label" for="form4Example2">Email address</label>
+        <input type="email" id="form4Example2" class="form-control"name="booking[user_email]" />
+      </div>
 
-    <%= form.submit :Submit, class: 'w-100 btn btn-success' %>
+      <div>
+        <%= form.label "Choose check_in date", style: "display: block" %>
+        <%= form.date_field :start_date %>
+      </div>
 
-  </div>
-<% end %>
+      <div>
+        <%= form.label "Choose check_out date", style: "display: block" %>
+        <%= form.date_field :last_date %>
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="btn w-100 btn btn-success btn-block mb-4">Submit</button>
+
+    </form>
+  <% end %>
+    <div>

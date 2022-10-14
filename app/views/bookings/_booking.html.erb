@@ -1,5 +1,6 @@
 <div id="<%= dom_id booking %>">
-
+  <%@room = Room.find(params[:room_id]) %>
+  <div class="container-sm">
   <p>
     <strong>Your name:</strong>
     <%= booking.user_name %>
@@ -11,19 +12,24 @@
   </p>
 
   <p>
-    <strong>Start date:</strong>
+    <strong>Check-in date:</strong>
     <%= booking.start_date %>
   </p>
 
   <p>
-    <strong>Last date:</strong>
+    <strong>Check-out date:</strong>
     <%= booking.last_date %>
   </p>
 
 
   <p>
     <strong>Room:</strong>
-    <%= booking.room_id %>
+    <%= @room.name %>
   </p>
+  <div>
+    <%= link_to "Back to rooms", rooms_path %>
+  </div>
+
+</div>
 
 </div>
