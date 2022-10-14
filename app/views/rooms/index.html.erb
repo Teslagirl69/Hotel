@@ -10,7 +10,7 @@
   class="bg-image"
   style="
   background-image: url('https://phonoteka.org/uploads/posts/2022-01/1643003484_1-phonoteka-org-p-bledno-rozovii-odnotonnii-fon-1.jpg');
-    height: 500vh;
+    height: 140vh;
   "
 >
   <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);, ">
@@ -55,9 +55,12 @@
     </div>
   </div>
 </section>
-  <header class="bg-dark py-2">
-  </header>
 <% end %>
+  <div class="bg-dark py-2">
+  </div>
+</br>
 
-
+<div class="center">
+  <%= paginate @rooms, window: 2%>
+</div>
 
