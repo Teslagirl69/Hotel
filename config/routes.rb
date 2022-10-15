@@ -32,8 +32,8 @@ Rails.application.routes.draw do
     resources :rooms, :bookings, :reviews
     get '/admin/dashboard', as: :authenticated_root
     get 'dashboard', to: 'pages#dashboard'
-    get 'booking_files(.:format)', to: 'files_for_bookings#download'
-    get 'pdf(.:format)', to: 'pdf_for_bookings#download'
+    get 'statistic_csv(.:format)', to: 'files_for_bookings#download'
+    get 'statistic_pdf(.:format)', to: 'pdf_for_bookings#download'
 
   end
   unauthenticated :admin do
