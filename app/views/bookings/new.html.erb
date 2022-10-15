@@ -9,8 +9,6 @@
       <ul>
         <% @booking.errors.each do |error| %>
           <li><%=  error.full_message  %></li>
-
-<!--          <li><%#=  error.attribute.to_s %></li>-->
         <% end %>
       </ul>
     </div>
@@ -53,6 +51,10 @@
         <%= form.date_field :last_date %>
       </div>
 
+      <div>
+        <input name="booking[room_id]" value="<%=params[:room_id] %>" type="hidden">
+      </div>
+      <%@booking.room_id = params[:room_id] %>
       <!-- Submit button -->
       <button type="submit" class="btn w-100 btn btn-success btn-block mb-4">Submit</button>
 
