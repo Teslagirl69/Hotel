@@ -11,8 +11,5 @@ class ExportDailyStatToPdf
     File.open(save_path, 'wb') do |file|
       file << pdf
     end
-
-
-    # export code
   end
 end

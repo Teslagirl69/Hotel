@@ -1,6 +1,7 @@
 class Room < ApplicationRecord
   has_many :bookings
   has_many_attached :images
+  paginates_per 2
 
   def self.available_rooms(start_date, last_date)
     Booking.excluded_id(start_date, last_date)

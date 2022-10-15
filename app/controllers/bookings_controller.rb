@@ -20,9 +20,6 @@ class BookingsController < ApplicationController
     @room = @booking.room
   end
 
-  # GET /bookings/1/edit
-  def edit; end
-
   # POST /bookings or /bookings.json
   def create
     @booking = Booking.new(booking_params)
@@ -40,28 +37,6 @@ class BookingsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /bookings/1 or /bookings/1.json
-  def update
-    respond_to do |format|
-      if @booking.update(booking_params)
-        format.html { redirect_to booking_url(@booking), notice: 'Booking was successfully updated.' }
-        format.json { render :show, status: :ok, location: @booking }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /bookings/1 or /bookings/1.json
-  def destroy
-    @booking.destroy
-
-    respond_to do |format|
-      format.html { redirect_to bookings_url, notice: 'Booking was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
 
   def toggle_status
     @booking = Booking.find(params[:id])

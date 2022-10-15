@@ -67,9 +67,9 @@
 }
 
 #items img {
-  float: left;
-  width: 400px;
-  height: 200px;
+
+  width: 500px;
+  height: 3300px;
 }
 .container-lg img {
   display: block;
@@ -77,3 +77,24 @@
   height: 350px !important;
   margin: 0 auto;
 }
+
+.center {
+  text-align: center;
+  }
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  background-color: white;
+  color: black;
+}
+
+.pagination a:hover:not(.active) {background-color: rosybrown;}

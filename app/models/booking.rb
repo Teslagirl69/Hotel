@@ -1,10 +1,9 @@
 class Booking < ApplicationRecord
   enum status: { pended: 0, accepted: 1 }
   belongs_to :room
-  validates :start_date, :last_date, :user_email, :user_name, presence: true
   before_validation :dates_is_blank
   before_validation :rooms_are_available
-  validate :date_restrictions
+  validates :start_date, :last_date, :user_email, :user_name, presence: true
   after_update :enqueue
 
   def enqueue
@@ -13,11 +12,9 @@ class Booking < ApplicationRecord
 
   def date_restrictions
       if Date.today > start_date
-        errors.add("Check-in date should be greater or equal to today's date")
-      elsif Date.today + 6.months < last_date.to_date
-       errors.add('Check-out date should be smaller than 6 months')
+        errors.add( :start_date, "Check-in date should be greater or equal to today's date")
       elsif last_date.to_date < start_date.to_date
-       errors.add('Check-out date should be greater than Check-in date')
+       errors.add(:last_date, 'Check-out date should be greater than Check-in date')
      end
   end
 
@@ -38,14 +35,13 @@ class Booking < ApplicationRecord
       return true
       else
       @booked_rooms.include?(room_id)
-      # errors.add("This room is not available on the selected dates.")
+      errors.add(:room_id, "This room is not available on the selected dates.")
       return false
     end
   end
-
   def dates_is_blank
-    if start_date.blank? || last_date.blank?
-     errors.add("Dates are blank")
+    if !start_date.blank? || !last_date.blank?
+        date_restrictions
     end
   end
 end
