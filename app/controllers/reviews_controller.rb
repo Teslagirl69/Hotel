@@ -17,6 +17,7 @@ class ReviewsController < ApplicationController
     @review = Review.new
   end
 
+
   # POST /reviews or /reviews.json
   def create
     @review = Review.new(review_params)
