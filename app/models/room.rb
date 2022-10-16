@@ -1,6 +1,7 @@
 class Room < ApplicationRecord
   has_many :bookings
   has_many_attached :images
+  validates :name, :description, :price, :short_description, presence: true
   paginates_per 2
 
   def self.available_rooms(start_date, last_date)
