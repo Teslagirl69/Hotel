@@ -3,7 +3,7 @@ class Booking < ApplicationRecord
   belongs_to :room
   before_validation :dates_is_blank
   before_validation :rooms_are_available
-  validates :start_date, :last_date, :user_email, :user_name, presence: true
+  validates :start_date, :last_date, :user_email, :user_name, :status, :room_id, presence: true
   after_update :enqueue
 
   def enqueue

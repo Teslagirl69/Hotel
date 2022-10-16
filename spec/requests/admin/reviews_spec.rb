@@ -19,18 +19,18 @@ RSpec.describe "/reviews", type: :request do
   # Review. As you add validations to Review, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    {
-      author_name: 'author',
-      author_email: "author@u.ru",
-      body: "short doby"
-    }
+  {
+    author_name: 'author',
+    author_email: "author@u.ru",
+    body: "short doby"
+  }
   end
   let(:invalid_attributes) do
-    {
-      author_name: '',
+  {
+    author_name: '',
       author_email: "",
       body: ""
-    }
+  }
   end
 
   describe "GET /index" do
@@ -38,8 +38,6 @@ RSpec.describe "/reviews", type: :request do
       Review.create! valid_attributes
       get reviews_url
       expect(response).to be_successful
-
-
     end
   end
 

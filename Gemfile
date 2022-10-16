@@ -85,7 +85,4 @@ gem 'kaminari'
 gem 'bootstrap', '~> 5.1.3'
 gem "cssbundling-rails", "~> 1.1"
 gem "jsbundling-rails", "~> 1.0"
-
-
-
 gem "sidekiq", "~> 6.5"

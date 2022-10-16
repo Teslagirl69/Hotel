@@ -1,8 +1,11 @@
 FactoryBot.define do
   factory :room do
-    name { "MyString" }
-    description { "MyText" }
-    price { 1 }
-    max_number_of_visitors { 1 }
-  end
+    name { "room1" }
+    description { "description" }
+    short_description { "short description"}
+    price { 100 }
+    created_at { Time.now }
+    updated_at { Time.now }
+    id {1}
+   end
 end

@@ -10,5 +10,6 @@ RSpec.describe "reviews/index", type: :view do
 
   it "renders a list of reviews" do
     render
+    cell_selector = Rails::VERSION::STRING >= '7' ? 'div>p' : 'tr>td'
   end
 end

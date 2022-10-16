@@ -33,6 +33,10 @@
   </div>
 
   <div>
+    <%= form.label "Add images:", style: "display: block" %>
+    <%= form.file_field :images, multiple: true %><br>
+  </div>
+  <div>
     <%= form.submit%>
   </div>
 <% end %>

@@ -13,10 +13,7 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/rooms", type: :request do
-  before do
-    room1 = Room.create!( id: 7, name: "RSpec Intro", description: "descr", short_description: 'short', price: 20, created_at: DateTime.now, updated_at: DateTime.now)
-    booking1 = Booking.create!( room_id: 7, id: 1, user_name: "RSpec Intro", user_email: "descr@g.ru", status: 0, created_at: DateTime.now, updated_at: DateTime.now, start_date: (Date.today + 10.days).to_s, last_date: (Date.today + 11.days).to_s)
-  end
+
   # This should return the minimal set of attributes required to create a valid
   # Room. As you add validations to Room, be sure to
   # adjust the attributes here as well.
@@ -46,7 +43,7 @@ RSpec.describe "/rooms", type: :request do
   end
 
   describe "GET /show" do
-        it "renders a successful response" do
+    it "renders a successful response" do
       room = Room.create! valid_attributes
       get room_url(room)
       expect(response).to be_successful
