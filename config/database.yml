@@ -81,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: Hotel_production
-  username: Hotel
+  database: hotel_production
+  username: hotel
   password: <%= ENV["HOTEL_DATABASE_PASSWORD"] %>
