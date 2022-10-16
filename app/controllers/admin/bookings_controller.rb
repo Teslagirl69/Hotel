@@ -14,7 +14,7 @@
     # PATCH/PUT /bookings/1 or /bookings/1.json
     def update
       respond_to do |format|
-        if @booking.update(booking_params)
+        if @booking.update_columns(status)
           format.html { redirect_to admin_bookings_url, notice: 'Booking was successfully updated.' }
         end
       end
@@ -31,9 +31,9 @@
     def toggle_status
       @booking = Booking.find(params[:id])
       if @booking.pended?
-        @booking.accepted!
+        @booking.update_columns(status: 1)
       elsif @booking.accepted?
-        @booking.pended!
+        @booking.update_columns(status: 0)
       end
       redirect_to admin_bookings_url, notice: 'Booking status has been updated.'
     end

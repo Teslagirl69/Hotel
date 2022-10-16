@@ -30,7 +30,6 @@ class Booking < ApplicationRecord
 
   def rooms_are_available
     @booked_rooms = Room.available_rooms(start_date, last_date)
-
     if @booked_rooms.empty?
       return true
       else
