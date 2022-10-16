@@ -3,7 +3,7 @@
 <%= form_for :room, url: admin_rooms_url, data: {turbo:false} do |form| %>
     <% if @room.errors.any? %>
       <div style="color: red">
-        <h2><%= pluralize(room.errors.count, "error") %> prohibited this room from being saved:</h2>
+        <h2><%= pluralize(@room.errors.count, "error") %> prohibited this room from being saved:</h2>
 
         <ul>
           <% @room.errors.each do |error| %>

@@ -5,7 +5,7 @@ class Booking < ApplicationRecord
   before_validation :rooms_are_available
   validates :start_date, :last_date, :status, :user_name, :room_id, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, length: { maximum: 100 }, format: { with: VALID_EMAIL_REGEX }
+  validates :user_email, length: { maximum: 100 }, format: { with: VALID_EMAIL_REGEX }
 
   after_update :enqueue
 
