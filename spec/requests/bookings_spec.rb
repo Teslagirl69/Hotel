@@ -27,7 +27,7 @@ RSpec.describe "/bookings", type: :request do
       user_name: "User",
       user_email: "email@mail.ru",
       start_date: "2022-12-02" ,
-      last_date:"2022-12-22",
+      last_date: "2022-12-22",
       room_id: 1,
       status: 0,
       id: 1
@@ -39,7 +39,7 @@ RSpec.describe "/bookings", type: :request do
       user_name: "",
       user_email: "",
       start_date: "" ,
-      last_date:""
+      last_date: ""
     }
   end
 
@@ -65,28 +65,22 @@ RSpec.describe "/bookings", type: :request do
     context "with valid parameters" do
       it "creates a new Booking" do
         expect {
-          post 'rooms/room1.id/bookings', params: valid_attributes
+         post room_bookings_url(1), params: valid_attributes
         }.to change(Booking, :count).by(1)
       end
 
       it "redirects to the created booking" do
-        post bookings_url, params: { booking: valid_attributes }
-        expect(response).to redirect_to(booking_url(Booking.last))
+        post room_bookings_url(1), params: { booking: valid_attributes }
+              expect(response).to redirect_to(room_booking_url(1, Booking.last))
       end
     end
 
     context "with invalid parameters" do
       it "does not create a new Booking" do
         expect {
-          post bookings_url, params: { booking: invalid_attributes }
+          post room_bookings_url(1), params: { booking: invalid_attributes }
         }.to change(Booking, :count).by(0)
-      end
-
-      it "renders a successful response (i.e. to display the 'new' template)" do
-        post bookings_url, params: { booking: invalid_attributes }
-        expect(response).to be_successful
       end
     end
   end
-
 end

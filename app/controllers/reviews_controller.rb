@@ -22,6 +22,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
 
+
     respond_to do |format|
       if @review.save
         format.html { redirect_to review_url(@review), notice: 'Review was successfully created.' }
@@ -42,6 +43,7 @@ class ReviewsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def review_params
+
     params.require(:review).permit(:author_name, :author_email, :body)
   end
 end

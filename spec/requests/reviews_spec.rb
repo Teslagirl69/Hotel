@@ -38,8 +38,6 @@ RSpec.describe "/reviews", type: :request do
       Review.create! valid_attributes
       get reviews_url
       expect(response).to be_successful
-
-
     end
   end
 
@@ -52,7 +50,7 @@ RSpec.describe "/reviews", type: :request do
   end
 
   describe "GET /new" do
-    it "renders a successful response" do
+      it "renders a successful response" do
       get new_review_url
       expect(response).to be_successful
     end
@@ -61,10 +59,10 @@ RSpec.describe "/reviews", type: :request do
 
   describe "POST /create" do
     context "with valid parameters" do
-      it "creates a new Review" do
-        expect {
+      fit "creates a new Review" do
+         expect {
           post reviews_url, params: { review: valid_attributes }
-        }.to change(Review, :count).by(1)
+        }.to change{Review.count}.by(1)
       end
 
       it "redirects to the created review" do

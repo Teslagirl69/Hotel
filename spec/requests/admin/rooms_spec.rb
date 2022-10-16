@@ -12,19 +12,31 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/rooms", type: :request do
-
+RSpec.describe "/admin/rooms", type: :request do
+  before do
+    admin = Admin.create!(email: "test@test.ru", password: '1234567')
+    sign_in admin
+  end
   # This should return the minimal set of attributes required to create a valid
   # Room. As you add validations to Room, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-     {
-       name: 'room1',
-       id: 1,
-       description: 'descr',
-       price: 100,
-       short_description: 'short'
-  }
+    {
+      name: 'room1',
+      id: 2,
+      description: 'descr',
+      price: 100,
+      short_description: 'short'
+    }
+  end
+  let(:new_valid_attributes) do
+    {
+      name: 'room3',
+      id: 3,
+      description: 'third room',
+      price: 300,
+      short_description: 'descr three'
+    }
   end
   let(:invalid_attributes) do
     {
@@ -32,12 +44,12 @@ RSpec.describe "/rooms", type: :request do
       description: '',
       price: '',
       short_description: ''
-  }
+    }
   end
   describe "GET /index" do
     it "renders a successful response" do
       Room.create! valid_attributes
-      get rooms_url
+      get admin_rooms_url
       expect(response).to be_successful
     end
   end
@@ -45,10 +57,58 @@ RSpec.describe "/rooms", type: :request do
   describe "GET /show" do
     it "renders a successful response" do
       room = Room.create! valid_attributes
-      get room_url(room)
+      get admin_room_url(room)
+      expect(response).to be_successful
+    end
+  end
+  describe 'GET /edit' do
+    let!(:new_room) { create :room }
+
+    it 'renders a successful response' do
+      get edit_admin_room_url(new_room)
       expect(response).to be_successful
     end
   end
 
+  describe 'POST /create' do
+    let!(:new_room) { create :room }
 
+    context 'with valid parameters' do
+      it 'creates a new Room' do
+        expect do
+          post admin_rooms_url, params: { room: new_room.attributes }
+        end.to change(Room, :count).by(1)
+      end
+
+      it 'redirects to the admin rooms page' do
+        post admin_rooms_url, params: { room: new_room.attributes }
+        expect(response).to redirect_to(admin_rooms_url)
+      end
+    end
+
+    context 'with invalid parameters' do
+      it 'does not create a new Room' do
+        expect do
+          post admin_rooms_url, params: { room: invalid_attributes }
+        end.to change(Room, :count).by(0)
+      end
+    end
+  end
+
+  describe 'DELETE /destroy' do
+    let!(:new_room) { create :room }
+
+    it 'destroys the requested room' do
+      room = new_room
+      expect do
+        delete admin_room_url(room)
+      end.to change(Room, :count).by(-1)
+    end
+
+    it 'redirects to the admin rooms page' do
+      room = new_room
+      delete admin_room_url(room)
+      expect(response).to redirect_to(admin_rooms_url)
+    end
+  end
 end
