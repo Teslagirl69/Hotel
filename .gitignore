@@ -35,3 +35,9 @@
 
 /node_modules
 *.env
+/coverage/*
+/.rspec
+/package-lock.json
+/bin/rspec
+/yarn-error.log
+/files/bookings_2022-10-12.pdf
