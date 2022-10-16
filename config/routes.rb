@@ -9,10 +9,11 @@ end
 Rails.application.routes.draw do
   mount Sidekiq::Web => 'admin/sidekiq'
   root "pages#index"
+  resources :reviews
   resources :rooms do
     resources :bookings
   end
-  resources :reviews
+
   get '/bookings', to: 'bookings#choose_room'
 
   devise_for :admin, path: 'admin', controllers: {

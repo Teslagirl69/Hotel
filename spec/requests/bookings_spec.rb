@@ -19,7 +19,9 @@ RSpec.describe "/bookings", type: :request do
   # adjust the attributes here as well.
   before do
     room1 = Room.create!( id: 1, name: "RSpec Intro", description: "descr", short_description: 'short', price: 20, created_at: DateTime.now, updated_at: DateTime.now)
-    end
+    room2 = Room.create!( id: 2, name: "RSpec Intro", description: "descr", short_description: 'short', price: 20, created_at: DateTime.now, updated_at: DateTime.now)
+
+  end
 
 
   let(:valid_attributes) do
@@ -70,7 +72,7 @@ RSpec.describe "/bookings", type: :request do
       end
 
       it "redirects to the created booking" do
-        post room_bookings_url(1), params: { booking: valid_attributes }
+        post room_bookings_url(2), params: { booking: valid_attributes }
               expect(response).to redirect_to(room_booking_url(1, Booking.last))
       end
     end
@@ -78,7 +80,7 @@ RSpec.describe "/bookings", type: :request do
     context "with invalid parameters" do
       it "does not create a new Booking" do
         expect {
-          post room_bookings_url(1), params: { booking: invalid_attributes }
+          post room_bookings_url(2), params: { booking: invalid_attributes }
         }.to change(Booking, :count).by(0)
       end
     end
