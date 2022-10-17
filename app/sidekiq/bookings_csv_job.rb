@@ -5,7 +5,7 @@ require 'csv'
 class BookingsCsvJob < ApplicationJob
   queue_as :default
 
-  def perform(*_args)
+  def perform(*args)
     ExportBookingsToCsv.call
   end
 end

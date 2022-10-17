@@ -7,12 +7,6 @@ class Booking < ApplicationRecord
   before_validation :rooms_are_available
   validates :start_date, :last_date, :status, :user_name, :user_email, :room_id, presence: true
 
-  after_update :enqueue
-
-  def enqueue
-    BookingsCsvJob.perform_later if accepted?
-  end
-
   def date_restrictions
     if Date.today > start_date
       errors.add(:start_date, "Check-in date should be greater or equal to today's date")

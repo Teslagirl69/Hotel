@@ -14,7 +14,7 @@ class Admin::BookingsController < ApplicationController
   def update
     respond_to do |format|
       if @booking.update_columns(status)
-        format.html { redirect_to admin_bookings_url, notice: 'Booking was successfully updated.' }
+         format.html { redirect_to admin_bookings_url, notice: 'Booking was successfully updated.' }
       end
     end
   end
@@ -31,6 +31,7 @@ class Admin::BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     if @booking.pended?
       @booking.update_columns(status: 1)
+      BookingsCsvJob.perform_later
     elsif @booking.accepted?
       @booking.update_columns(status: 0)
     end
