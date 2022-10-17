@@ -3,8 +3,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
 
-
-
   # GET /bookings/1 or /bookings/1.json
   def show
     @room = @booking.room
@@ -26,12 +24,11 @@ class BookingsController < ApplicationController
         format.html do
           redirect_to room_booking_path(@booking.room_id, @booking), notice: 'Booking was successfully created.'
         end
-         else
+      else
         format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
-
 
   def toggle_status
     @booking = Booking.find(params[:id])
