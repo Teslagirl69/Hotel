@@ -1,5 +1,6 @@
-class ExportDailyStatToPdf
+# frozen_string_literal: true
 
+class ExportDailyStatToPdf
   def self.call
     new.call
   end

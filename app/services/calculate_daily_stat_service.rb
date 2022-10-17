@@ -1,7 +1,7 @@
-class CalculateDailyStatService
+# frozen_string_literal: true
 
-  def initialize
-  end
+class CalculateDailyStatService
+  def initialize; end
 
   def calculate
     statistics = Booking.where(created_at: 1.day.ago.all_day).group(:status).count
