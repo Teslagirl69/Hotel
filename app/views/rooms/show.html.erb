@@ -29,7 +29,7 @@
           <h1 class="display-5 fw-bolder text-white mb-2">    <%= @room.name %></h1>
           <p class="lead fw-normal text-white-50 mb-4">    <%= @room.description %></p>
           <p class="lead fw-normal text-white mb-4">  Price is:  <%= @room.price %>$ per one night</p>
-          <%= button_to "Book now!", bookings_url, method: :get, class: "btn btn-outline-secondary btn-lg"%>
+          <%= button_to "Book now!", new_room_booking_path(@room.id), method: :get, class: "btn btn-outline-secondary btn-lg"%>
         </div>
       </div>
       <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
