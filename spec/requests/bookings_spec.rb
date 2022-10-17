@@ -67,6 +67,7 @@ RSpec.describe "/bookings", type: :request do
     context "with valid parameters" do
       it "creates a new Booking" do
         expect {
+          booking1 = Booking.create! valid_attributes
          post room_bookings_url(1), params: valid_attributes
         }.to change(Booking, :count).by(1)
       end

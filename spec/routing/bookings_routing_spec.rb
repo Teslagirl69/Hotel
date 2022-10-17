@@ -2,37 +2,20 @@ require "rails_helper"
 
 RSpec.describe BookingsController, type: :routing do
   describe "routing" do
-    it "routes to #index" do
-      expect(get: "/bookings").to route_to("bookings#index")
-    end
 
     it "routes to #new" do
-      expect(get: "/bookings/new").to route_to("bookings#new")
+      expect(get: "/rooms/2/bookings/new").to route_to("bookings#new", room_id: "2")
     end
 
     it "routes to #show" do
-      expect(get: "/bookings/1").to route_to("bookings#show", id: "1")
-    end
-
-    it "routes to #edit" do
-      expect(get: "/bookings/1/edit").to route_to("bookings#edit", id: "1")
+      expect(get: "/rooms/2/bookings/1").to route_to("bookings#show", id: "1", room_id: "2")
     end
 
 
     it "routes to #create" do
-      expect(post: "/bookings").to route_to("bookings#create")
+      expect(post: "/rooms/2//bookings").to route_to("bookings#create", room_id: "2")
     end
 
-    it "routes to #update via PUT" do
-      expect(put: "/bookings/1").to route_to("bookings#update", id: "1")
-    end
 
-    it "routes to #update via PATCH" do
-      expect(patch: "/bookings/1").to route_to("bookings#update", id: "1")
-    end
-
-    it "routes to #destroy" do
-      expect(delete: "/bookings/1").to route_to("bookings#destroy", id: "1")
-    end
   end
 end

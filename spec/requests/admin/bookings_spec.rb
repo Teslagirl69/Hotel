@@ -37,21 +37,16 @@ RSpec.describe "/bookings", type: :request do
     }
   end
   before do
-     # sign_in(:admin)
+    admin = Admin.create!(email: "test@test.ru", password: '1234567')
+    sign_in admin
       Room.create!( id: 1, name: "RSpec Intro", description: "descr", short_description: 'short', price: 20, created_at: DateTime.now, updated_at: DateTime.now)
   end
-  #
-  # let(:admin) do
-  #   Admin.create!(email: 'admin@admin.com', password: 'admin123')
-  # end
-  #
 
 
     describe 'authorized' do
       describe 'GET /index' do
         it 'redirect index' do
         Booking.create! valid_attributes
-        sign_in create(:admin, email: 'admin@admin.com', password: 'admin123')
           get admin_bookings_url
           expect(response).to be_successful
         end
@@ -62,7 +57,6 @@ RSpec.describe "/bookings", type: :request do
         context 'with valid parameters' do
           let(:new_attributes) { {} }
           it 'redirect to root' do
-            sign_in create(:admin, email: 'admin@admin.com', password: 'admin123')
             booking1 = Booking.create! valid_attributes
             patch admin_booking_url(booking1), params: { admin_booking: new_attributes }
             booking1.reload

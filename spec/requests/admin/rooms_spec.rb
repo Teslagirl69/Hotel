@@ -76,7 +76,9 @@ RSpec.describe "/admin/rooms", type: :request do
     context 'with valid parameters' do
       it 'creates a new Room' do
         expect do
+          room5 = Room.create! valid_attributes
           post admin_rooms_url, params: { room: new_room.attributes }
+          room5.reload
         end.to change(Room, :count).by(1)
       end
 
