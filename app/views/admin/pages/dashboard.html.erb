@@ -24,5 +24,8 @@
      </tr>
     </tbody>
     </table>
+    <div class="text-center">
+      <%= link_to "Download pdf statistics for #{1.day.ago.to_date}", admin_download_pdf_path(format: :pdf)%>
+    </div>
   </div>
 </div>

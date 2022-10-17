@@ -34,8 +34,7 @@ Rails.application.routes.draw do
     get '/admin/dashboard', as: :authenticated_root
     get 'dashboard', to: 'pages#dashboard'
     get 'statistic_csv(.:format)', to: 'files_for_bookings#download'
-    get 'statistic_pdf(.:format)', to: 'pdf_for_bookings#download'
-
+    get 'statistic_pdf(.:format)', to: 'pdf_for_bookings#download', as: "download_pdf"
   end
   unauthenticated :admin do
     namespace :admin do
