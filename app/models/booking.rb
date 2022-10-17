@@ -44,6 +44,6 @@ class Booking < ApplicationRecord
   end
 
   def dates_is_blank
-    date_restrictions if start_date.present? || last_date.present?
+        date_restrictions if start_date.present? && last_date.present?
   end
 end
