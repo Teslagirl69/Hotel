@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Weather
   def initialize(data)
     @data = data.with_indifferent_access
