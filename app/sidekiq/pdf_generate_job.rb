@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'wicked_pdf'
 
-class PdfGenerateJob < ActiveJob::Base
+class PdfGenerateJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
+  def perform(*_args)
     ExportDailyStatToPdf.call
   end
 end
