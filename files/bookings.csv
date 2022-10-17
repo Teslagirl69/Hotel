@@ -1,9 +1,1 @@
 id,start_date,last_date,created_at,user_name,user_email,room_id
-30,2022-11-01,2022-11-02,2022-10-13 13:05:35 UTC,e,example@example.ru,8
-29,2022-10-15,2022-10-16,2022-10-13 00:35:40 UTC,stan,lee@example.ru,8
-28,2022-10-16,2022-10-17,2022-10-13 00:03:36 UTC,prince,king@example.ru,9
-37,2022-11-03,2022-11-04,2022-10-16 15:44:53 UTC,Mr Smith,myemail@email.ru,8
-37,2022-11-03,2022-11-04,2022-10-16 15:44:53 UTC,Mr Smith,myemail@email.ru,8
-37,2022-11-03,2022-11-04,2022-10-16 15:44:53 UTC,Mr Smith,myemail@email.ru,8
-37,2022-11-03,2022-11-04,2022-10-16 15:44:53 UTC,Mr Smith,myemail@email.ru,8
-37,2022-11-03,2022-11-04,2022-10-16 15:44:53 UTC,Mr Smith,myemail@email.ru,8
