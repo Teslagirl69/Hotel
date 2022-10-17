@@ -6,9 +6,9 @@ SimpleCov.start 'rails'
 require 'spec_helper'
 require_relative '../config/environment'
 require 'capybara/rspec'
-require "devise"
+require 'devise'
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'shoulda/matchers'
 Shoulda::Matchers.configure do |config|
@@ -47,7 +47,6 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :request
-
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false

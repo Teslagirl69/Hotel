@@ -12,70 +12,67 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/reviews", type: :request do
-
-
+RSpec.describe '/reviews', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Review. As you add validations to Review, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
     {
       author_name: 'author',
-      author_email: "author@u.ru",
-      body: "short doby"
+      author_email: 'author@u.ru',
+      body: 'short doby'
     }
   end
   let(:invalid_attributes) do
     {
       author_name: '',
-      author_email: "",
-      body: ""
+      author_email: '',
+      body: ''
     }
   end
 
-  describe "GET /index" do
-    it "renders a successful response" do
+  describe 'GET /index' do
+    it 'renders a successful response' do
       Review.create! valid_attributes
       get reviews_url
       expect(response).to be_successful
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
+  describe 'GET /show' do
+    it 'renders a successful response' do
       review = Review.create! valid_attributes
       get review_url(review)
       expect(response).to be_successful
     end
   end
 
-  describe "GET /new" do
-      it "renders a successful response" do
+  describe 'GET /new' do
+    it 'renders a successful response' do
       get new_review_url
       expect(response).to be_successful
     end
   end
 
-
-  describe "POST /create" do
-    context "with valid parameters" do
-      fit "creates a new Review" do
-         expect {
+  describe 'POST /create' do
+    context 'with valid parameters' do
+      it 'creates a new Review' do
+        expect do
           post reviews_url, params: { review: valid_attributes }
-        }.to change{Review.count}.by(1)
+        end.to change { Review.count }.by(1)
       end
 
-      it "redirects to the created review" do
+      it 'redirects to the created review' do
         post reviews_url, params: { review: valid_attributes }
         expect(response).to redirect_to(review_url(Review.last))
       end
     end
 
-    context "with invalid parameters" do
-      it "does not create a new Review" do
-        expect {
+    context 'with invalid parameters' do
+      it 'does not create a new Review' do
+        expect do
           post reviews_url, params: { review: invalid_attributes }
-        }.to change(Review, :count).by(0)
+        end.to change(Review, :count).by(0)
       end
     end
   end

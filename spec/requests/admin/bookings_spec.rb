@@ -12,17 +12,16 @@ require 'date'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/bookings", type: :request do
-  
+RSpec.describe '/bookings', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Booking. As you add validations to Booking, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
     {
-      user_name: "User",
-      user_email: "email@mail.ru",
-      start_date: "2022-12-02" ,
-      last_date:"2022-12-22",
+      user_name: 'User',
+      user_email: 'email@mail.ru',
+      start_date: '2022-12-02',
+      last_date: '2022-12-22',
       room_id: 1,
       status: 0
     }
@@ -30,58 +29,55 @@ RSpec.describe "/bookings", type: :request do
 
   let(:invalid_attributes) do
     {
-      user_name: "",
-      user_email: "",
-      start_date: "" ,
-      last_date:""
+      user_name: '',
+      user_email: '',
+      start_date: '',
+      last_date: ''
     }
   end
+
   before do
-    admin = Admin.create!(email: "test@test.ru", password: '1234567')
+    admin = Admin.create!(email: 'test@test.ru', password: '1234567')
     sign_in admin
-      Room.create!( id: 1, name: "RSpec Intro", description: "descr", short_description: 'short', price: 20, created_at: DateTime.now, updated_at: DateTime.now)
+    Room.create!(id: 1, name: 'RSpec Intro', description: 'descr', short_description: 'short', price: 20,
+                 created_at: DateTime.now, updated_at: DateTime.now)
   end
 
-
-    describe 'authorized' do
-      describe 'GET /index' do
-        it 'redirect index' do
+  describe 'authorized' do
+    describe 'GET /index' do
+      it 'redirect index' do
         Booking.create! valid_attributes
-          get admin_bookings_url
-          expect(response).to be_successful
-        end
+        get admin_bookings_url
+        expect(response).to be_successful
       end
+    end
 
+    describe 'PATCH /update' do
+      context 'with valid parameters' do
+        let(:new_attributes) { {} }
 
-      describe 'PATCH /update' do
-        context 'with valid parameters' do
-          let(:new_attributes) { {} }
-          it 'redirect to root' do
-            booking1 = Booking.create! valid_attributes
-            patch admin_booking_url(booking1), params: { admin_booking: new_attributes }
-            booking1.reload
-            expect(response).to redirect_to(admin_bookings_url)
-          end
-        end
-
-
-      end
-
-      describe 'DELETE /destroy' do
-        it 'destroys the requested booking' do
+        it 'redirect to root' do
           booking1 = Booking.create! valid_attributes
-          expect do
-            delete admin_booking_url(booking1)
-          end.to change(Booking, :count).by(-1)
-        end
-
-        it 'redirects to the bookings list' do
-          booking = Booking.create! valid_attributes
-          delete admin_booking_url(booking)
+          patch admin_booking_url(booking1), params: { admin_booking: new_attributes }
+          booking1.reload
           expect(response).to redirect_to(admin_bookings_url)
         end
       end
-
-
     end
+
+    describe 'DELETE /destroy' do
+      it 'destroys the requested booking' do
+        booking1 = Booking.create! valid_attributes
+        expect do
+          delete admin_booking_url(booking1)
+        end.to change(Booking, :count).by(-1)
+      end
+
+      it 'redirects to the bookings list' do
+        booking = Booking.create! valid_attributes
+        delete admin_booking_url(booking)
+        expect(response).to redirect_to(admin_bookings_url)
+      end
+    end
+  end
 end

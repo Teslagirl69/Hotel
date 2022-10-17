@@ -12,37 +12,35 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/admin/reviews", type: :request do
-
+RSpec.describe '/admin/reviews', type: :request do
   before do
-    admin = Admin.create!(email: "test@test.ru", password: '1234567')
+    admin = Admin.create!(email: 'test@test.ru', password: '1234567')
     sign_in admin
   end
+
   # This should return the minimal set of attributes required to create a valid
   # Review. As you add validations to Review, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-  {
-    author_name: 'author',
-    author_email: "author@u.ru",
-    body: "short doby"
-  }
+    {
+      author_name: 'author',
+      author_email: 'author@u.ru',
+      body: 'short doby'
+    }
   end
   let(:invalid_attributes) do
-  {
-    author_name: '',
-      author_email: "",
-      body: ""
-  }
+    {
+      author_name: '',
+      author_email: '',
+      body: ''
+    }
   end
 
-  describe "GET /index" do
-    it "renders a successful response" do
+  describe 'GET /index' do
+    it 'renders a successful response' do
       Review.create! valid_attributes
-      get "/admin/reviews"
+      get '/admin/reviews'
       expect(response).to be_successful
     end
   end
-
-
 end

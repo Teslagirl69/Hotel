@@ -12,11 +12,12 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/admin/rooms", type: :request do
+RSpec.describe '/admin/rooms', type: :request do
   before do
-    admin = Admin.create!(email: "test@test.ru", password: '1234567')
+    admin = Admin.create!(email: 'test@test.ru', password: '1234567')
     sign_in admin
   end
+
   # This should return the minimal set of attributes required to create a valid
   # Room. As you add validations to Room, be sure to
   # adjust the attributes here as well.
@@ -46,21 +47,23 @@ RSpec.describe "/admin/rooms", type: :request do
       short_description: ''
     }
   end
-  describe "GET /index" do
-    it "renders a successful response" do
+
+  describe 'GET /index' do
+    it 'renders a successful response' do
       Room.create! valid_attributes
       get admin_rooms_url
       expect(response).to be_successful
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
+  describe 'GET /show' do
+    it 'renders a successful response' do
       room = Room.create! valid_attributes
       get admin_room_url(room)
       expect(response).to be_successful
     end
   end
+
   describe 'GET /edit' do
     let!(:new_room) { create :room }
 

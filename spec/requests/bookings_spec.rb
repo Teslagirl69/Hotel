@@ -12,24 +12,23 @@ require 'date'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/bookings", type: :request do
-  
+RSpec.describe '/bookings', type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Booking. As you add validations to Booking, be sure to
   # adjust the attributes here as well.
   before do
-    room1 = Room.create!( id: 1, name: "RSpec Intro", description: "descr", short_description: 'short', price: 20, created_at: DateTime.now, updated_at: DateTime.now)
-    room2 = Room.create!( id: 2, name: "RSpec Intro", description: "descr", short_description: 'short', price: 20, created_at: DateTime.now, updated_at: DateTime.now)
-
+    room1 = Room.create!(id: 1, name: 'RSpec Intro', description: 'descr', short_description: 'short', price: 20,
+                         created_at: DateTime.now, updated_at: DateTime.now)
+    room2 = Room.create!(id: 2, name: 'RSpec Intro', description: 'descr', short_description: 'short', price: 20,
+                         created_at: DateTime.now, updated_at: DateTime.now)
   end
-
 
   let(:valid_attributes) do
     {
-      user_name: "User",
-      user_email: "email@mail.ru",
-      start_date: "2022-12-02" ,
-      last_date: "2022-12-22",
+      user_name: 'User',
+      user_email: 'email@mail.ru',
+      start_date: '2022-12-02',
+      last_date: '2022-12-22',
       room_id: 1,
       status: 0,
       id: 1
@@ -38,51 +37,49 @@ RSpec.describe "/bookings", type: :request do
 
   let(:invalid_attributes) do
     {
-      user_name: "",
-      user_email: "",
-      start_date: "" ,
-      last_date: ""
+      user_name: '',
+      user_email: '',
+      start_date: '',
+      last_date: ''
     }
   end
 
-
-
-  describe "GET /show" do
-    it "renders a successful response" do
+  describe 'GET /show' do
+    it 'renders a successful response' do
       booking = Booking.create! valid_attributes
-      get room_booking_url(booking,1)
+      get room_booking_url(booking, 1)
       expect(response).to be_successful
     end
   end
 
-  describe "GET /new" do
-     it "renders a successful response" do
-       booking = Booking.create! valid_attributes
-       get new_room_booking_url(booking,1)
+  describe 'GET /new' do
+    it 'renders a successful response' do
+      booking = Booking.create! valid_attributes
+      get new_room_booking_url(booking, 1)
       expect(response).to be_successful
     end
   end
 
-   describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new Booking" do
-        expect {
+  describe 'POST /create' do
+    context 'with valid parameters' do
+      it 'creates a new Booking' do
+        expect do
           booking1 = Booking.create! valid_attributes
-         post room_bookings_url(1), params: valid_attributes
-        }.to change(Booking, :count).by(1)
+          post room_bookings_url(1), params: valid_attributes
+        end.to change(Booking, :count).by(1)
       end
 
-      it "redirects to the created booking" do
+      it 'redirects to the created booking' do
         post room_bookings_url(2), params: { booking: valid_attributes }
-              expect(response).to redirect_to(room_booking_url(1, Booking.last))
+        expect(response).to redirect_to(room_booking_url(1, Booking.last))
       end
     end
 
-    context "with invalid parameters" do
-      it "does not create a new Booking" do
-        expect {
+    context 'with invalid parameters' do
+      it 'does not create a new Booking' do
+        expect do
           post room_bookings_url(2), params: { booking: invalid_attributes }
-        }.to change(Booking, :count).by(0)
+        end.to change(Booking, :count).by(0)
       end
     end
   end
